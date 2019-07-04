@@ -1,0 +1,4 @@
+[build] 
+base = "cost-splitter/"
+publish = "cost-splitter/build/"
+command = "yarn build"
