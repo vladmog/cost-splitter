@@ -40,7 +40,6 @@ class Friend extends Component {
                 {this.props.friend.cost3 === 0 ? (<></>) : (<div>{this.props.friend.expense3}: ${this.props.friend.cost3}</div>)}
                 {this.props.friend.cost4 === 0 ? (<></>) : (<div>{this.props.friend.expense4}: ${this.props.friend.cost4}</div>)}
                 {this.props.friend.cost5 === 0 ? (<></>) : (<div>{this.props.friend.expense5}: ${this.props.friend.cost5}</div>)}
-                <hr/>
                 <div>Total costs: ${this.state.totalCosts}</div>
                 {this.state.evenToggle ? (<div>You're even!</div>) : (this.state.owesToggle ? (this.props.owed.map(owed => {
                     return (
@@ -58,6 +57,7 @@ class Friend extends Component {
                 ) : (
                     <div>You are owed ${(parseFloat(this.state.totalCosts) - parseFloat(this.props.evenPayment)).toFixed(2)}</div>
                 ))}
+                <hr/>
             </div>
         )
     }
