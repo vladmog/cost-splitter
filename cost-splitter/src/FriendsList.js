@@ -17,6 +17,7 @@ class FriendsList extends Component {
                                 friend = {friend} 
                                 evenPayment = {this.props.evenPayment}
                                 owed = {this.props.owed}
+                                addingToggle = {this.props.addingToggle}
                             />
                         </div>
                     )
