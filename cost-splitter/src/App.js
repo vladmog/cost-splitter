@@ -69,19 +69,24 @@ class App extends Component {
             <FriendForm 
               addFriendToList = {this.addFriendToList}
             />
+
             <FriendsList 
               friends = {this.state.friends} 
               evenPayment = {this.state.evenPayment} 
               owed = {this.state.owed}
-              />
-            <button onClick = {this.getTotalCosts}>Calculate</button>
+            />
+
+            {this.state.friends.length === 0 
+              ? <></> 
+              : <button onClick = {this.getTotalCosts}>Calculate</button>}
+
             {this.state.total === null
-            ? <></>
-            :<div>Total: {this.state.total}</div>}
+              ? <></>
+              :<div>Total: ${this.state.total}</div>}
 
             {this.state.evenPayment === null
             ? <></>
-            :<div>Even Payment: {this.state.evenPayment}</div>}
+            :<div>Even Payment: ${this.state.evenPayment}</div>}
           </div>
         </div>
       );
