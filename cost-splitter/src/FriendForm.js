@@ -27,6 +27,11 @@ class FriendForm extends Component {
 
     addFriend = (e) => {
         e.preventDefault()
+        let cost1 = (this.state.cost1 ? this.state.cost1 : 0)
+        let cost2 = (this.state.cost2 ? this.state.cost2 : 0)
+        let cost3 = (this.state.cost3 ? this.state.cost3 : 0)
+        let cost4 = (this.state.cost4 ? this.state.cost4 : 0)
+        let cost5 = (this.state.cost5 ? this.state.cost5 : 0)
         let friend = {
             friendId: this.state.friendId,
             name: (this.state.name ? this.state.name : `Friend ${this.state.friendIncrement}` ),
@@ -35,11 +40,16 @@ class FriendForm extends Component {
             expense3: (this.state.expense3 ? this.state.expense3 : "Expense 3"),
             expense4: (this.state.expense4 ? this.state.expense4 : "Expense 4"),
             expense5: (this.state.expense5 ? this.state.expense5 : "Expense 5"),
-            cost1: (this.state.cost1 ? this.state.cost1 : 0),
-            cost2: (this.state.cost2 ? this.state.cost2 : 0),
-            cost3: (this.state.cost3 ? this.state.cost3 : 0),
-            cost4: (this.state.cost4 ? this.state.cost4 : 0),
-            cost5: (this.state.cost5 ? this.state.cost5 : 0),
+            cost1: cost1,
+            cost2: cost2,
+            cost3: cost3,
+            cost4: cost4,
+            cost5: cost5,
+            totalCosts:(parseFloat(cost1) +
+                parseFloat(cost2) +
+                parseFloat(cost3) +
+                parseFloat(cost4) +
+                parseFloat(cost5)),
         }
         this.props.addFriendToList(friend)
 
