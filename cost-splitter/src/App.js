@@ -11,7 +11,7 @@ class App extends Component {
     friends: [],
     owed: [],
     total: 0,
-    evenPayment: 0,
+    evenPayment: null,
   }
 
 
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   calculateEvenPayment = total => {
-    let evenPayment = total / this.state.friends.length
+    let evenPayment = parseFloat(total / this.state.friends.length)
     this.setState((prevState) => ({
       evenPayment: evenPayment.toFixed(2)
     }))
@@ -76,7 +76,9 @@ class App extends Component {
               />
             <button onClick = {this.getTotalCosts}>Calculate</button>
             <div>Total: {this.state.total}</div>
-            <div>Even Payment: {this.state.evenPayment}</div>
+            {this.state.evenPayment === null
+            ? <></>
+            :<div>Even Payment: {this.state.evenPayment}</div>}
           </div>
         </div>
       );
