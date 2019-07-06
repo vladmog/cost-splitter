@@ -118,6 +118,7 @@ class FriendForm extends Component {
             cost4: "",
             cost5: "",
         }))
+        this.props.addingToggleTrue()
     }
 
     

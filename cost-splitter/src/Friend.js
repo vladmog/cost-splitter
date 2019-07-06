@@ -43,7 +43,7 @@ class Friend extends Component {
                 {this.props.friend.cost4 === 0 ? (<></>) : (<div>{this.props.friend.expense4}: ${this.props.friend.cost4}</div>)}
                 {this.props.friend.cost5 === 0 ? (<></>) : (<div>{this.props.friend.expense5}: ${this.props.friend.cost5}</div>)}
                 <div>Total costs: ${this.props.friend.totalCosts}</div>
-                {(this.props.evenPayment === null
+                {(this.props.addingToggle
                     ? <></>
                     :this.state.evenToggle 
                         ? (<div>You're even!</div>) 

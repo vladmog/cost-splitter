@@ -16,8 +16,21 @@ class App extends Component {
     owed: [],
     total: null,
     evenPayment: null,
+    addingToggle: true,
   }
 
+  addingToggleTrue = () => {
+    if(this.state.addingToggle === false){  
+      this.setState({
+        addingToggle: true
+      })}
+  }
+
+  addingToggleFalse = () => {
+    this.setState({
+      addingToggle: false
+    })
+  }
 
   addFriendToList = (friend) => {
     this.setState((prevState) => ({
@@ -38,6 +51,7 @@ class App extends Component {
       total: total
     }))
     this.calculateEvenPayment(total)
+    this.addingToggleFalse()
   }
 
   calculateEvenPayment = total => {
@@ -69,29 +83,29 @@ class App extends Component {
   render(){
       return (
         <AppContainer>
-          <div>
-            <FriendForm 
-              addFriendToList = {this.addFriendToList}
-            />
+          <FriendForm 
+            addFriendToList = {this.addFriendToList}
+            addingToggleTrue = {this.addingToggleTrue}
+          />
 
-            <FriendsList 
-              friends = {this.state.friends} 
-              evenPayment = {this.state.evenPayment} 
-              owed = {this.state.owed}
-            />
+          <FriendsList 
+            friends = {this.state.friends} 
+            evenPayment = {this.state.evenPayment} 
+            owed = {this.state.owed}
+            addingToggle = {this.state.addingToggle}
+          />
 
-            {this.state.friends.length === 0 
-              ? <></> 
-              : <button onClick = {this.getTotalCosts}>Calculate</button>}
+          {this.state.friends.length === 0 
+            ? <></> 
+            : <button onClick = {this.getTotalCosts}>Calculate</button>}
 
-            {this.state.total === null
-              ? <></>
-              :<div>Total: ${this.state.total}</div>}
-
-            {this.state.evenPayment === null
+          {this.state.addingToggle === true
             ? <></>
-            :<div>Even Payment: ${this.state.evenPayment}</div>}
-          </div>
+            :<div>Total: ${this.state.total}</div>}
+
+          {this.state.addingToggle === true
+          ? <></>
+          :<div>Even Payment: ${this.state.evenPayment}</div>}
         </AppContainer>
       );
   }
