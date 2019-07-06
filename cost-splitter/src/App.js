@@ -10,13 +10,12 @@ class App extends Component {
   state = {
     friends: [],
     owed: [],
-    total: 0,
+    total: null,
     evenPayment: null,
   }
 
 
   addFriendToList = (friend) => {
-    console.log("friend: ", friend)
     this.setState((prevState) => ({
       friends: [
         ...prevState.friends,
@@ -42,7 +41,6 @@ class App extends Component {
     this.setState((prevState) => ({
       evenPayment: evenPayment.toFixed(2)
     }))
-    console.log("evenPaayment: ", evenPayment)
     this.createOwedList(evenPayment)
   }
 
@@ -68,14 +66,19 @@ class App extends Component {
       return (
         <div className="App">
           <div>
-            <FriendForm addFriendToList = {this.addFriendToList} />
+            <FriendForm 
+              addFriendToList = {this.addFriendToList}
+            />
             <FriendsList 
               friends = {this.state.friends} 
               evenPayment = {this.state.evenPayment} 
               owed = {this.state.owed}
               />
             <button onClick = {this.getTotalCosts}>Calculate</button>
-            <div>Total: {this.state.total}</div>
+            {this.state.total === null
+            ? <></>
+            :<div>Total: {this.state.total}</div>}
+
             {this.state.evenPayment === null
             ? <></>
             :<div>Even Payment: {this.state.evenPayment}</div>}
