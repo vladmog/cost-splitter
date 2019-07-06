@@ -5,6 +5,10 @@ import FriendForm from './FriendForm';
 import FriendsList from './FriendsList';
 import styled from 'styled-components';
 
+const AppContainer = styled.div`
+    width: 95%;
+    margin: auto;
+`;
 
 class App extends Component {
   state = {
@@ -64,7 +68,7 @@ class App extends Component {
 
   render(){
       return (
-        <div className="App">
+        <AppContainer>
           <div>
             <FriendForm 
               addFriendToList = {this.addFriendToList}
@@ -88,7 +92,7 @@ class App extends Component {
             ? <></>
             :<div>Even Payment: ${this.state.evenPayment}</div>}
           </div>
-        </div>
+        </AppContainer>
       );
   }
 }

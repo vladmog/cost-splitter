@@ -1,6 +1,14 @@
 import React from 'react';
 import {Component} from 'react';
 import Message from './Message';
+import styled from 'styled-components';
+
+const FriendDiv = styled.div`
+    border: solid grey 1px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+`;
 
 class Friend extends Component {
     state = {
@@ -27,7 +35,7 @@ class Friend extends Component {
     render() {
         let friendOwes = parseFloat(this.props.evenPayment) - parseFloat(this.props.friend.totalCosts)
         return(
-            <div>
+            <FriendDiv>
                 <h3>{this.props.friend.name}</h3>
                 {this.props.friend.cost1 === 0 ? (<></>) : (<div>{this.props.friend.expense1}: ${this.props.friend.cost1}</div>)}
                 {this.props.friend.cost2 === 0 ? (<></>) : (<div>{this.props.friend.expense2}: ${this.props.friend.cost2}</div>)}
@@ -55,8 +63,7 @@ class Friend extends Component {
                             })) 
                             : (<div>You are owed ${(parseFloat(this.props.friend.totalCosts) - parseFloat(this.props.evenPayment)).toFixed(2)}</div>)
                         ))}
-                <hr/>
-            </div>
+            </FriendDiv>
         )
     }
 }

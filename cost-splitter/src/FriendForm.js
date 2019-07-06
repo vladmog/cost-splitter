@@ -1,5 +1,55 @@
 import React from 'react';
 import {Component} from 'react';
+import styled from 'styled-components';
+
+
+const FormDiv = styled.div`
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+`;
+    const InputsDiv = styled.div`
+        width: 100%;
+        margin: auto;
+    `;
+        const NameDiv = styled.div`
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2px;
+        `;
+            const NameInput = styled.input`
+                width: 66%;
+                text-align: center;
+                border: solid gray 1px;
+            `;
+        const InputPairDiv = styled.div`
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: space-evenly;
+            // background-color: black;
+            margin-bottom: 2px;
+        `;
+            const ExpenseInput = styled.input`
+                width: 49%;
+                border: solid gray 1px;
+
+            `;
+            const CostInput = styled.input`
+                width: 49%;
+                border: solid gray 1px;
+            `;
+        const AddFriendButton = styled.button`
+            height: 30px;
+            width: 100%;
+            margin: auto;
+        `;
+
+
+
 
 class FriendForm extends Component {
     state = {
@@ -74,101 +124,103 @@ class FriendForm extends Component {
 
     render() {
         return(
-            <div>
-                <div>
-                    <input
+            <FormDiv>
+                <NameDiv>
+                    <NameInput
                         name = "name"
                         placeholder = "Name"
                         value = {this.state.name}
                         onChange = {this.changeHandler}
                     />
-                </div>
-                <div>
-                    <input 
-                        name = "expense1"
-                        type = "text"
-                        placeholder = "Expense"
-                        value = {this.state.expense1}
-                        onChange = {this.changeHandler}
-                    />
-                    <input 
-                        name = "cost1"
-                        placeholder = "Cost" 
-                        type = "number" 
-                        value = {this.state.cost1}
-                        onChange = {this.changeHandler}
-                    />
-                </div>
-                
-                <div>
-                    <input 
-                        name = "expense2"
-                        type = "text"
-                        placeholder = "Expense"
-                        value = {this.state.expense2}
-                        onChange = {this.changeHandler}
-                    />
-                    <input 
-                        name = "cost2"
-                        placeholder = "Cost" 
-                        type = "number" 
-                        value = {this.state.cost2}
-                        onChange = {this.changeHandler}
-                    />
-                </div>
+                </NameDiv>
+                <InputsDiv>
+                    <InputPairDiv>
+                        <ExpenseInput 
+                            name = "expense1"
+                            type = "text"
+                            placeholder = "Expense"
+                            value = {this.state.expense1}
+                            onChange = {this.changeHandler}
+                        />
+                        <CostInput 
+                            name = "cost1"
+                            placeholder = "Cost" 
+                            type = "number" 
+                            value = {this.state.cost1}
+                            onChange = {this.changeHandler}
+                        />
+                    </InputPairDiv>
+                    
+                    <InputPairDiv>
+                        <ExpenseInput  
+                            name = "expense2"
+                            type = "text"
+                            placeholder = "Expense"
+                            value = {this.state.expense2}
+                            onChange = {this.changeHandler}
+                        />
+                        <CostInput 
+                            name = "cost2"
+                            placeholder = "Cost" 
+                            type = "number" 
+                            value = {this.state.cost2}
+                            onChange = {this.changeHandler}
+                        />
+                    </InputPairDiv>
 
-                <div>
-                    <input 
-                        name = "expense3"
-                        type = "text"
-                        placeholder = "Expense"
-                        value = {this.state.expense3}
-                        onChange = {this.changeHandler}
-                    />
-                    <input 
-                        name = "cost3"
-                        placeholder = "Cost" 
-                        type = "number" 
-                        value = {this.state.cost3}
-                        onChange = {this.changeHandler}
-                    />
-                </div>
+                    <InputPairDiv>
+                        <ExpenseInput  
+                            name = "expense3"
+                            type = "text"
+                            placeholder = "Expense"
+                            value = {this.state.expense3}
+                            onChange = {this.changeHandler}
+                        />
+                        <CostInput
+                            name = "cost3"
+                            placeholder = "Cost" 
+                            type = "number" 
+                            value = {this.state.cost3}
+                            onChange = {this.changeHandler}
+                        />
+                    </InputPairDiv>
 
-                <div>
-                    <input 
-                        name = "expense4"
-                        type = "text"
-                        placeholder = "Expense"
-                        value = {this.state.expense4}
-                        onChange = {this.changeHandler}
-                    />
-                    <input 
-                        name = "cost4"
-                        placeholder = "Cost" 
-                        type = "number" 
-                        value = {this.state.cost4}
-                        onChange = {this.changeHandler}
-                    />
-                </div>
+                    <InputPairDiv>
+                        <ExpenseInput  
+                            name = "expense4"
+                            type = "text"
+                            placeholder = "Expense"
+                            value = {this.state.expense4}
+                            onChange = {this.changeHandler}
+                        />
+                        <CostInput
+                            name = "cost4"
+                            placeholder = "Cost" 
+                            type = "number" 
+                            value = {this.state.cost4}
+                            onChange = {this.changeHandler}
+                        />
+                    </InputPairDiv>
 
-                <div>
-                    <input 
-                        name = "expense5"
-                        type = "text"
-                        placeholder = "Expense"
-                        value = {this.state.expense5}
-                        onChange = {this.changeHandler}
-                    />
-                    <input 
-                        name = "cost5"
-                        placeholder = "Cost" 
-                        type = "number" 
-                        value = {this.state.cost5}
-                        onChange = {this.changeHandler}
-                    />
-                </div>
-                <button onClick = {this.addFriend}>Add friend</button>
-            </div>
+                    <InputPairDiv>
+                        <ExpenseInput  
+                            name = "expense5"
+                            type = "text"
+                            placeholder = "Expense"
+                            value = {this.state.expense5}
+                            onChange = {this.changeHandler}
+                        />
+                        <CostInput
+                            name = "cost5"
+                            placeholder = "Cost" 
+                            type = "number" 
+                            value = {this.state.cost5}
+                            onChange = {this.changeHandler}
+                        />
+                    </InputPairDiv>
+                </InputsDiv>
+                <AddFriendButton onClick = {this.addFriend}>Add friend</AddFriendButton>
+            </FormDiv>
         )
     }
 }
