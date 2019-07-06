@@ -16,6 +16,7 @@ class App extends Component {
 
 
   addFriendToList = (friend) => {
+    console.log("friend: ", friend)
     this.setState((prevState) => ({
       friends: [
         ...prevState.friends,
@@ -25,9 +26,9 @@ class App extends Component {
   }
 
   getTotalCosts = e => {
-    // console.log(typeof this.state.friends[0].cost1)
+    
     let total = this.state.friends.reduce((total, friend) => {
-      return total + parseFloat(friend.cost1) + parseFloat(friend.cost2) + parseFloat(friend.cost3) + parseFloat(friend.cost4) + parseFloat(friend.cost5);
+      return total + parseFloat(friend.totalCosts);
     }, 0)
 
     this.setState((prevState) => ({
@@ -37,8 +38,6 @@ class App extends Component {
   }
 
   calculateEvenPayment = total => {
-    console.log("total: ", total)
-    console.log("friends#: ", this.state.friends.length)
     let evenPayment = total / this.state.friends.length
     this.setState((prevState) => ({
       evenPayment: evenPayment.toFixed(2)
@@ -49,34 +48,17 @@ class App extends Component {
 
   createOwedList = (evenPayment) => {
     let owed = this.state.friends.filter(friend => {
-      return (parseFloat(friend.cost1) +
-        parseFloat(friend.cost2) +
-        parseFloat(friend.cost3) +
-        parseFloat(friend.cost4) +
-        parseFloat(friend.cost5)) > evenPayment
-        // parseFloat(friend.cost5)) > this.state.evenPayment
+      return (parseFloat(friend.totalCosts)) > evenPayment
     })
-    console.log("owed: ", owed)
     let cumulativeOwed = owed.reduce((cumulativeOwed, friend) => {
-      return parseFloat(cumulativeOwed) + (parseFloat(friend.cost1) +
-      parseFloat(friend.cost2) +
-      parseFloat(friend.cost3) +
-      parseFloat(friend.cost4) +
-      parseFloat(friend.cost5) - parseFloat(evenPayment))
-      // parseFloat(friend.cost5) - parseFloat(this.state.evenPayment))
+      return parseFloat(cumulativeOwed) + (parseFloat(friend.totalCosts) - parseFloat(evenPayment))
     }, 0)
     let owedWithPercentage = owed.map(friend => {
       friend.percentageOwed = (
-        ((parseFloat(friend.cost1) +
-        parseFloat(friend.cost2) +
-        parseFloat(friend.cost3) +
-        parseFloat(friend.cost4) +
-        parseFloat(friend.cost5)) - evenPayment) / cumulativeOwed
-        // parseFloat(friend.cost5)) - this.state.evenPayment) / cumulativeOwed
+        ((parseFloat(friend.totalCosts)) - evenPayment) / cumulativeOwed
       )
       return friend
     })
-    console.log("owedWithPercentage: ", owedWithPercentage)
     this.setState((prevState) => ({
       owed: owedWithPercentage
     }))
